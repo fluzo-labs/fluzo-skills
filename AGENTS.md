@@ -2,7 +2,7 @@
 
 ## Alcance
 
-Este repositorio contiene instrucciones originales de Fluzo, no una aplicación. La raíz de distribución es `skills/`; cada carpeta publicada contiene `SKILL.md`, sus referencias locales y `LICENSE`. El catálogo está en ambas versiones del README. No migres otras colecciones ni modifiques repositorios consumidores por implicación.
+Este repositorio contiene instrucciones originales de Fluzo y adaptaciones selectivas mantenidas localmente, no una aplicación. La raíz de distribución es `skills/`; cada carpeta publicada contiene `SKILL.md`, sus referencias locales y `LICENSE`. El catálogo está en ambas versiones del README. No migres otras colecciones ni modifiques repositorios consumidores por implicación.
 
 ## Autoría
 
@@ -10,7 +10,7 @@ Este repositorio contiene instrucciones originales de Fluzo, no una aplicación.
 - Usa nombres de carpeta en minúsculas con guiones, iguales al campo `name` del frontmatter. La descripción indica activación y exclusiones.
 - Mantén el procedimiento principal en `SKILL.md` y explica cuándo leer cada referencia. No crees directorios opcionales vacíos ni dependencias de archivos fuera de la skill.
 - Respeta UTF-8, LF, salto final y dos espacios de indentación. No incluyas credenciales, transcripciones privadas ni rutas personales.
-- Mantén las instrucciones originales y autocontenidas. No añadas proveedores externos de skills, descargas ni actualizaciones automáticas. Si se incorpora material de terceros mediante una decisión explícita, conserva su licencia y atribución aplicables.
+- Mantén las instrucciones autocontenidas. No añadas dependencias operativas de proveedores externos de skills, descargas ni actualizaciones automáticas. Las adaptaciones autorizadas `rust-practices` y `rust-review` conservan procedencia histórica en ORIGIN.md, revisiones fijadas y sus licencias MIT y Apache-2.0. Esas atribuciones no son imports ni instrucciones de descarga. Para nuevo material externo, exige una decisión explícita y conserva su licencia y atribución aplicables.
 - Fluzo es la marca de la colección, no una identidad inventada del agente o modelo.
 
 ## Contratos

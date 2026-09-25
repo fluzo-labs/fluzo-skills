@@ -32,6 +32,14 @@ Al adaptar o copiar estas carpetas, conserva el copyright original de Jose Corra
 
 Para futuros cambios, repite los casos afectados y actualiza la identidad de contenido solo tras revisar el diff. No conviertas fallos por caché offline, lockfile o configuración en permiso de instalación. Los escenarios no ejecutados siguen pendientes aunque las comprobaciones documentales sean correctas.
 
+## Adaptaciones locales adicionales
+
+`rust-practices` y `rust-review` se comprueban como carpetas independientes, con nombres estables, instrucciones locales, LICENSE y ORIGIN.md. Verifica las revisiones completas y los hashes de licencia registrados en [VENDORED-RUST.md](VENDORED-RUST.md). Los enlaces de procedencia no se ejecutan ni se siguen durante el uso ordinario.
+
+Se revisaron estructura, sintaxis de ejemplos, licencias y portabilidad. No se ha ejecutado una evaluación del agente ni una suite Rust representativa específica de estas dos adaptaciones. Los resultados previos de boundaries/testing no validan automáticamente las nuevas skills.
+
+No elimines licencias, avisos de modificación ni atribución para aparentar ausencia de dependencias. El control consiste en mantener todo el contenido operativo versionado aquí y aprobar explícitamente futuras incorporaciones, sin descargas automáticas.
+
 ## LSP local
 
 El `crushrc` configura el servidor 1.98.0 ya instalado, sin cambiar la toolchain global. Comprueba su sintaxis con `bash -n crushrc`. Esta colección no contiene un workspace Cargo ni requiere LSP para leer skills. Una prueba directa del servidor no equivale a confirmar su activación en la sesión actual de Crush.

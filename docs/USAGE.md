@@ -9,13 +9,15 @@ Fluzo skills distribuye instrucciones para agentes, no un ejecutor de herramient
 | `tui-design` | Diseño, implementación o revisión de interfaces de terminal | Objetivo, modo solicitado y proyecto o interfaz existente | Contrato de interacción, implementación autorizada o hallazgos con evidencia |
 | `fluzo-deterministic-testing` | Tests Rust, fixtures, simuladores, flakiness, cancelación o verificación de efectos | Requisito, comportamiento esperado y suite consumidora | Diseño de regresión, cambios autorizados y resultados diferenciados de la simulación |
 | `fluzo-rust-boundaries` | Crates, dependencias Cargo, features o protocolos entre componentes | Workspace, política de dependencias y configuraciones soportadas | Caminos del grafo, revisión de propiedad y cambios o excepciones propuestos |
+| `rust-practices` | Implementación o refactor Rust acotado | Requisito, código y contratos del consumidor | Cambios autorizados de propiedad, errores o async con regresiones |
+| `rust-review` | Revisión Rust explícita | Diff, criterios, callers y pruebas | Hallazgos por severidad, evidencia y límites, sin correcciones automáticas |
 
 Los nombres `fluzo-*` se conservan para facilitar una migración sin instalaciones duplicadas. No exigen usar los nombres de crates ni los scripts del proyecto Fluzo.
 
 ## Instalación manual y revisión
 
 1. Obtén una copia del repositorio desde una revisión identificada. Antes de ejecutar configuración o herramientas, revisa su contenido. Una copia local sin commit no identifica una versión publicada.
-2. Elige las skills necesarias y lee el `SKILL.md`, sus referencias y licencia. No es necesario instalar las tres.
+2. Elige las skills necesarias y lee el `SKILL.md`, sus referencias y licencia. No es necesario instalar las cinco. Conserva también ORIGIN.md cuando exista.
 3. Comprueba las rutas que descubre tu agente. Si soporta `.agents/skills/`, copia cada carpeta completa allí, conservando exactamente su nombre. Revisa primero si existe una instalación; no la sobrescribas.
 4. No copies `docs/`, la raíz completa ni `crushrc` como parte de una skill. La configuración de desarrollo de esta colección no es configuración obligatoria del consumidor.
 5. Reabre el proyecto o actualiza el descubrimiento según el host. Comprueba que aparece el nombre esperado, sin duplicados en otras rutas.
@@ -71,11 +73,20 @@ Ejemplos:
 
 La salida debe incluir el camino completo y configuración de cada violación. Un grafo válido no demuestra pureza: la biblioteca estándar también permite I/O. Una compilación correcta tampoco demuestra la política arquitectónica. La matriz debe representar targets y features soportados, no un `--all-features` elegido por comodidad.
 
+## Prácticas y revisión Rust
+
+- "Usa rust-practices para implementar este cambio autorizado. Conserva los DTOs propios y verifica errores y cancelación sin instalar dependencias."
+- "Usa rust-review para revisar este diff. Reporta hallazgos concretos con severidad, ubicación y evidencia; no modifiques archivos."
+
+`rust-practices` incluye las reglas seleccionadas en `references/selected.md`; `rust-review` incorpora el checklist operativo completo en su SKILL.md. Ambas tienen casos de validación locales, licencia y ORIGIN.md. No consultan handbooks remotos ni requieren scripts del repositorio Fluzo. Su validación actual es estática y de portabilidad, no evaluación funcional del agente.
+
+Consulta [las adaptaciones controladas](VENDORED-RUST.md) para las revisiones de origen, licencias y política de mantenimiento local. Las atribuciones no son dependencias ejecutables ni fuentes de actualización.
+
 ## Componer las skills sin duplicar procesos
 
 Para una TUI Rust que presenta resultados asíncronos, usa boundaries para los contratos entre presentación y ejecución, tui-design para interacción y terminal, y deterministic-testing para verificación de scheduling y efectos. Carga cada una cuando corresponda; ninguna importa archivos de las otras ni requiere instalar otra skill.
 
-No conviertas esa combinación en un pipeline automático. Conserva el alcance y la aprobación de cada paso, pasa evidencias como datos y evita que las tres repitan una revisión genérica del repositorio.
+No conviertas esa combinación en un pipeline automático. Conserva el alcance y la aprobación de cada paso, pasa evidencias como datos y evita repetir una revisión genérica del repositorio. rust-practices orienta la implementación y rust-review una revisión explícita posterior; no sustituyen los contratos especializados de boundaries, testing o TUI.
 
 ## Dependencias y LSP de desarrollo
 
@@ -98,7 +109,7 @@ No habilites macros o build scripts automáticamente ante símbolos incompletos.
 
 - Mantén el catálogo y los README inglés/español sincronizados.
 - Conserva los procedimientos y referencias en inglés; mantenimiento y evidencia se documentan en español.
-- Distribuye `LICENSE` dentro de cada skill. Las dos adaptaciones Rust conservan el copyright original de Jose Corral; la licencia raíz no lo reemplaza.
+- Distribuye `LICENSE` dentro de cada skill. Testing determinista y boundaries conservan el copyright de Jose Corral; rust-practices conserva MIT de Leonardo Maldonado y rust-review conserva Apache-2.0. Mantén ORIGIN.md y avisos de modificación; la licencia raíz no los reemplaza.
 - Antes de publicar, revisa archivos sin seguimiento, enlaces, frontmatter, secretos, licencias y copia independiente. Consulta [VALIDATION.md](VALIDATION.md).
 - Registra pruebas ejecutadas y limitaciones. La evidencia Rust actual está en [RUST-VALIDATION.md](RUST-VALIDATION.md); el alcance y progreso están en [RESEARCH-RUST-SKILLS.md](RESEARCH-RUST-SKILLS.md).
 - Commit y push publican una revisión de la colección, no crean una release ni instalan skills en consumidores. Tags, releases, assets y migraciones requieren autorización independiente.

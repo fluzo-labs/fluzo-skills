@@ -2,7 +2,7 @@
 
 English | [Español](README.es.md)
 
-Original, reusable instructions for designing and building Fluzo developer experiences. Skills guide an agent; they are not an application, enforcement sandbox, or unattended workflow.
+Reusable instructions maintained by Fluzo, including original procedures and selectively adapted Rust guidance. Skills guide an agent; they are not an application, enforcement sandbox, or unattended workflow.
 
 ## Catalog
 
@@ -11,14 +11,16 @@ Original, reusable instructions for designing and building Fluzo developer exper
 | [tui-design](skills/tui-design/SKILL.md) | Designing, implementing, and reviewing terminal interfaces, including agent sessions, safe approvals, streaming results, accessibility, and automation |
 | [fluzo-deterministic-testing](skills/fluzo-deterministic-testing/SKILL.md) | Isolated Rust fixtures, strict simulators, controlled scheduling, and independent regression evidence |
 | [fluzo-rust-boundaries](skills/fluzo-rust-boundaries/SKILL.md) | Resolved Cargo dependency paths, feature configurations, state ownership, and application protocols |
+| [rust-practices](skills/rust-practices/SKILL.md) | Scoped Rust implementation: ownership, errors, bounded async work, and evidence-based optimization |
+| [rust-review](skills/rust-review/SKILL.md) | Explicit Rust review with concrete findings, severity, and verified consumer checks |
 
-All three skills are available as reviewed instruction sources, not a versioned release. The Rust procedures have been checked with positive and negative disposable Cargo fixtures; this is not an agent-behavior evaluation or native Fluzo E2E test. TUI validation remains static only. No release, installer, bundle, or CI pipeline is provided.
+The five skills are distributed as instruction sources; a source release is not a compiled application or a behavioral guarantee. The deterministic-testing and boundaries procedures have been checked with positive and negative disposable Cargo fixtures; this is not an agent-behavior evaluation or native Fluzo E2E test. TUI, rust-practices, and rust-review validation remains static only. No installer, custom bundle, or CI pipeline is provided.
 
 ## Use a local copy
 
 Copy the complete `skills/tui-design/` directory from a reviewed revision into the skill directory supported by your agent, for example `.agents/skills/tui-design/` when that host supports it. Preserve its `LICENSE` and `references/`, check for an existing installation before copying, and confirm that the agent discovers the skill. Do not copy the repository root as a skill.
 
-For either Rust skill, use the same complete-folder procedure with its catalog name. Their MIT licenses retain the original Jose Corral notice as well as the Fluzo adaptation notice. Do not overwrite an existing consumer installation or migrate it until a reviewed published revision is available.
+For any other skill, use the same complete-folder procedure with its catalog name. Preserve its individual license and any ORIGIN.md. The deterministic-testing and boundaries skills retain the original Jose Corral MIT notice; rust-practices retains Leonardo Maldonado's MIT license; rust-review retains Apache-2.0. Do not overwrite an existing consumer installation or migrate it until a reviewed published revision is available.
 
 Discovery and optional frontmatter fields depend on the host. Copies do not update themselves. Review subsequent changes explicitly; this collection does not download instructions or alter permissions at runtime.
 
@@ -41,7 +43,7 @@ The Rust skills discover the consumer's architecture and test commands. Their Fl
 
 ## Maintenance
 
-Read the [complete usage guide](docs/USAGE.md) for installation, inputs/outputs, examples for all three skills, approval boundaries, composition, local LSP setup, and publication.
+Read the [complete usage guide](docs/USAGE.md) for installation, inputs/outputs, examples for all five skills, approval boundaries, composition, local LSP setup, and publication.
 
 See [AGENTS.md](AGENTS.md) for authoring rules and [validation guidance](docs/VALIDATION.md) for checks and their limits. Repository maintenance documentation is in Spanish; skill instructions and references are in English. Skill outputs follow the consumer's language, or the user's language when no convention is defined.
 
@@ -49,4 +51,4 @@ See the [Rust research and implementation plan](docs/RESEARCH-RUST-SKILLS.md) an
 
 ## License
 
-[MIT](LICENSE). Each distributable skill includes its own license copy so standalone redistribution retains the notice.
+Original collection material uses [MIT](LICENSE). Individual adapted content retains its applicable license: `rust-practices` is MIT and `rust-review` is Apache-2.0. Preserve each folder's LICENSE and provenance; the root license does not relicense third-party material. See [controlled local adaptations](docs/VENDORED-RUST.md) for fixed revisions and update policy.
