@@ -14,7 +14,18 @@ Reusable instructions maintained by Fluzo, including original procedures and sel
 | [rust-practices](skills/rust-practices/SKILL.md) | Scoped Rust implementation: ownership, errors, bounded async work, and evidence-based optimization |
 | [rust-review](skills/rust-review/SKILL.md) | Explicit Rust review with concrete findings, severity, and verified consumer checks |
 
-The five skills are distributed as instruction sources; a source release is not a compiled application or a behavioral guarantee. The deterministic-testing and boundaries procedures have been checked with positive and negative disposable Cargo fixtures; this is not an agent-behavior evaluation or native Fluzo E2E test. TUI, rust-practices, and rust-review validation remains static only. No installer, custom bundle, or CI pipeline is provided.
+The five skills are distributed as instruction sources; a source release is not a compiled application or a behavioral guarantee. The deterministic-testing and boundaries procedures have been checked with positive and negative disposable Cargo fixtures; this is not an agent-behavior evaluation or native Fluzo E2E test. TUI, rust-practices, and rust-review validation remains static only. No installer or custom bundle is provided; CI only runs `bond catalog check` and a whitespace check.
+
+## Use with bond
+
+This repository is also a [bond](https://github.com/jmanuelcorral/bond) catalog named `fluzo`: `catalog.toml` lists the five skills with the summary that `bond init` shows. In a consumer repository:
+
+```bash
+bond catalog add https://github.com/fluzo-labs/fluzo-skills --ref v1
+bond init      # choose the fluzo skills for your agents
+```
+
+`bond catalog add` pins the resolved commit in `.bond/lock.json`, and `bond sync` installs each selected skill folder complete, with its `LICENSE`, `ORIGIN.md`, and `references/`, from that commit. Move to a newer revision explicitly with `bond catalog update fluzo`. When you add or rename a skill here, update `catalog.toml` and run `bond catalog check` before publishing.
 
 ## Use a local copy
 

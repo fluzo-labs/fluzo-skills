@@ -1,0 +1,25 @@
+# bond catalog: the skills in skills/ as bond init offers them in a consumer repo.
+# summary is the one-line text bond init shows; default = false lists the skill unchecked.
+# Check before publishing: bond catalog check
+
+name = "fluzo"
+
+[skills.tui-design]
+summary = "Design, implement and review terminal UIs and interactive CLIs"
+default = false
+
+[skills.fluzo-deterministic-testing]
+summary = "Deterministic Rust tests: isolated fixtures, strict simulators, regression evidence"
+default = false
+
+[skills.fluzo-rust-boundaries]
+summary = "Review Rust crate boundaries, Cargo features and shared protocol types"
+default = false
+
+[skills.rust-practices]
+summary = "Scoped Rust implementation: ownership, typed errors, bounded async"
+default = false
+
+[skills.rust-review]
+summary = "Explicit Rust review with concrete findings and severity"
+default = false
