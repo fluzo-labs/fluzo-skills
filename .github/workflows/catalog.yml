@@ -1,0 +1,31 @@
+name: catalog
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      BOND_VERSION: 1.6.3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install bond
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/bond"
+          cd "$RUNNER_TEMP/bond"
+          gh release download "v$BOND_VERSION" --repo jmanuelcorral/bond --pattern bond-linux-x64 --pattern SHA256SUMS
+          grep ' bond-linux-x64$' SHA256SUMS | sha256sum -c -
+          install -m 755 bond-linux-x64 bond
+          echo "$RUNNER_TEMP/bond" >> "$GITHUB_PATH"
+      - name: Check catalog
+        run: bond catalog check
+      - name: Check whitespace
+        run: git diff --check "$(git hash-object -t tree /dev/null)" HEAD
